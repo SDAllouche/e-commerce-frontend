@@ -1,1 +1,49 @@
-<p>client works!</p>
+<div class="container">
+  <ng-template  #errorTemplate>
+    <div class="text-danger">{{errorMessage}}</div>
+  </ng-template>
+  <div class="card mt-3" *ngIf="clients; else errorTemplate">
+    <div class="card-header">Clients List</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-outline-warning rounded-5" (click)="addClient()">
+            <i class="bi bi-plus-lg"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="card">
+          <div class="card-body">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Id</th> <th>Name</th> <th>Phone</th> <th>Address</th>
+                <th></th><th></th><th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let p of clients">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.phone}}</td>
+                <td>{{p.address}}</td>
+                <td >
+                  <button class="btn btn-info">
+                    <i class="bi bi-pen"></i>
+                  </button>
+                </td>
+                <td >
+                  <button class="btn btn-danger">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

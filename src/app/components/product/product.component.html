@@ -1,1 +1,51 @@
-<p>product works!</p>
+<div class="container">
+  <ng-template  #errorTemplate>
+    <div class="text-danger">{{errorMessage}}</div>
+  </ng-template>
+  <div class="card mt-3" *ngIf="products; else errorTemplate">
+    <div class="card-header">Cars List</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-outline-warning rounded-5"  (click)="addProduct()">
+            <i class="bi bi-plus-lg"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="card">
+          <div class="card-body">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Id</th> <th>Name</th> <th>Slug</th> <th>Stock</th><th>Category</th>
+                <th></th><th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let p of products">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.slug}}</td>
+                <td>{{p.stock}}</td>
+                <td>{{p.category}}</td>
+                <td>
+                  <button class="btn btn-info" (click)="updateProduct(p.id)">
+                    <i class="bi bi-pen"></i>
+                  </button>
+                </td>
+                <td >
+                  <button class="btn btn-danger" (click)="deleteProduct(p)">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
